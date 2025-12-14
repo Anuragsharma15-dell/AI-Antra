@@ -77,396 +77,89 @@ Grounds responses using real-world data
 
 Extracts raw content, keywords, and sources
 
-Output Includes:
+<!--
+  Polished README for AI-Antra (Agent Pipeline)
+  - The screenshot will prefer `/public/screenshot.png` and fall back to `/public/preview-screenshot.svg`.
+  - If you want the exact screenshot from the attachments placed into the repo, put it at `public/screenshot.png`.
+-->
 
-Source titles
+# AI-Antra — Agent Pipeline
 
-Relevance scores
+> Multi-Agent research pipeline that orchestrates autonomous AI agents to gather, analyze, and synthesize research into structured reports.
 
-Raw gathered content
+[![Vercel OSS Program](https://vercel.com/oss/program-badge.svg)](https://vercel.com/oss)
 
-Processed user query
+## Quick demo
 
-2️⃣ Analysis Agent — Data Processor
+<p align="center">
+  <picture>
+    <source srcset="/public/screenshot.png" type="image/png">
+    <img src="/public/preview-screenshot.svg" alt="Agent Pipeline screenshot" style="width:100%;max-width:1100px;border-radius:12px;box-shadow:0 10px 30px rgba(2,6,23,0.6);" />
+  </picture>
+</p>
 
-Status: ✅ Complete
-Responsibility:
+<p align="center">A clean, modern interface demonstrating the multi-agent research flow and real-time pipeline execution.</p>
 
-Processes gathered data
+## Features
 
-Identifies recurring patterns
+- Deterministic multi-agent pipeline: Research → Analysis → Summarize → Report
+- Source-grounded outputs with confidence scoring
+- Streaming, edge-native responses using Vercel AI SDK
+- Structured JSON outputs that are easy to consume or export
 
-Extracts key insights
+## Tech Stack
 
-Evaluates confidence levels
+- Frontend: Vite + React + TypeScript
+- UI: Tailwind CSS + Custom components
+- Edge & AI: Vercel Edge Functions + Vercel AI SDK
+- Integrations: Exa (web search) and Supabase for persistence
 
-Output Includes:
+## Getting Started
 
-Patterns detected across sources
+1. Install dependencies
 
-High-level insights
+```bash
+npm install
+```
 
-Confidence score
+2. Start the dev server
 
-Refined query context
+```bash
+npm run dev
+```
 
-3️⃣ Summary Agent — Content Synthesizer
+3. Open http://localhost:5173 (or the port displayed by Vite)
 
-Status: ✅ Complete
-Responsibility:
+## Screenshot placement
 
-Converts analytical insights into structured, readable summaries
+The README uses a fallback mechanism so the file renders even if the exact screenshot is not yet in the repo.
 
-Removes redundancy
+- Preferred location for the real screenshot: `public/screenshot.png`
+- Fallback preview (already included): `public/preview-screenshot.svg`
 
-Preserves factual accuracy
+If you want me to embed the exact screenshot from your attachments into the repo, drop the image into `public/screenshot.png` and I'll add it for you.
 
-Output Includes:
+## Project structure (relevant)
 
-Key findings
+- `src/` — React app source
+- `public/` — static assets (favicons, screenshots)
+- `supabase/functions/` — serverless Edge Functions (agent execution)
 
-Concise explanations
+## Usage
 
-Structured narrative ready for reporting
+- Enter a research query in the left panel and watch the pipeline execute.
+- Pipeline stages are visible in the main dashboard with progress and logs.
 
-4️⃣ Report Agent — Output Generator
+## Contributing
 
-Status: ❌ Error
-Responsibility:
+Contributions are welcome. Please open issues or PRs for bugs, improvements, or feature requests.
 
-Generates the final structured research report
+## License
 
-Produces actionable recommendations
+This project is licensed under AGPLv3. See `LICENSE` for details.
 
-Formats content for end-user consumption
+---
 
-Current Issue:
+If you want, I can also embed the supplied screenshot image directly into the repository at `public/screenshot.png` now — would you like me to add that file (I can add it if you confirm)?
 
-Pipeline stopped: Failed to send a request to the Edge Function
 
-
-The Report Agent failure does not affect the integrity of earlier agents.
-Research, analysis, and summary stages complete successfully.
-
-📊 Example Agent Outputs
-🔍 Research Agent Output
-
-Latency: ~5923ms
-
-Tokens: 615
-
-Collected Sources: Investopedia, Forbes, Wikipedia, AIHR, The Balance Careers
-
-Keywords: HR, recruitment, employee lifecycle, compliance, benefits, engagement
-
-🧠 Analysis Agent Output
-
-Latency: ~4595ms
-
-Tokens: 1001
-
-Confidence: 0.98
-
-Insights:
-
-HR is both a function and a department
-
-Modern HR is strategic, not administrative
-
-Core responsibilities span recruitment, compliance, culture, and development
-
-📝 Summary Agent Output
-
-Latency: ~3989ms
-
-Tokens: 817
-
-Key Findings:
-
-HR manages the full employee lifecycle
-
-Plays a strategic role in organizational success
-
-Includes multiple specialized roles and functions
-
-✨ Key Features
-
-Multi-agent AI architecture
-
-Deterministic research pipeline
-
-Source-grounded outputs
-
-Structured agent outputs (JSON)
-
-High confidence scoring
-
-Edge-native execution
-
-Streaming AI responses
-
-🧠 Powered By
-
-Vercel AI SDK — AI model orchestration & streaming
-
-Vercel Edge Functions — Low-latency execution
-
-Next.js (App Router) — Application framework
-
-Modern LLMs — For reasoning, synthesis, and analysis
-
-🎯 Use Cases
-
-Academic research
-
-Market research
-
-Business analysis
-
-Policy analysis
-
-Technical documentation
-
-Knowledge discovery
-
-⚠️ Known Limitations
-
-Report Agent currently fails due to an Edge Function request issue
-
-Final report generation is temporarily unavailable
-
-Pipeline halts at the final stage
-
-🛣️ Roadmap
-
-✅ Stable multi-agent pipeline
-
-✅ Streaming AI outputs
-
-🔄 Fix Report Agent Edge Function failure
-
-🔜 Export reports (PDF / Markdown)
-
-🔜 Persistent research history
-
-🔜 Citation linking
-
-📜 License
-
-This project is licensed under the AGPLv3 License.
-See the LICENSE
- file for details.**🧠 Research AI Agent
-
-A minimal, agent-driven AI research system that autonomously gathers information, analyzes data, synthesizes insights, and generates structured research outputs using a multi-stage AI Agent Pipeline.
-
-Built on Vercel + Vercel AI SDK for fast, streaming, edge-native intelligence.
-
-🚀 Overview
-
-Research AI Agent transforms a simple user query into a well-structured research report by orchestrating multiple specialized agents.
-Each agent focuses on a single responsibility, ensuring accuracy, depth, and clarity.
-
-The system is designed for:
-
-Research
-
-Analysis
-
-Knowledge synthesis
-
-Decision support
-
-🧩 Agent Pipeline
-
-The research workflow is executed through a deterministic, multi-step agent pipeline:
-
-1️⃣ Research Agent — Data Gatherer
-
-Status: ✅ Complete
-Responsibility:
-
-Searches and collects relevant information from multiple trusted sources
-
-Grounds responses using real-world data
-
-Extracts raw content, keywords, and sources
-
-Output Includes:
-
-Source titles
-
-Relevance scores
-
-Raw gathered content
-
-Processed user query
-
-2️⃣ Analysis Agent — Data Processor
-
-Status: ✅ Complete
-Responsibility:
-
-Processes gathered data
-
-Identifies recurring patterns
-
-Extracts key insights
-
-Evaluates confidence levels
-
-Output Includes:
-
-Patterns detected across sources
-
-High-level insights
-
-Confidence score
-
-Refined query context
-
-3️⃣ Summary Agent — Content Synthesizer
-
-Status: ✅ Complete
-Responsibility:
-
-Converts analytical insights into structured, readable summaries
-
-Removes redundancy
-
-Preserves factual accuracy
-
-Output Includes:
-
-Key findings
-
-Concise explanations
-
-Structured narrative ready for reporting
-
-4️⃣ Report Agent — Output Generator
-
-Status: ❌ Error
-Responsibility:
-
-Generates the final structured research report
-
-Produces actionable recommendations
-
-Formats content for end-user consumption
-
-Current Issue:
-
-Pipeline stopped: Failed to send a request to the Edge Function
-
-
-The Report Agent failure does not affect the integrity of earlier agents.
-Research, analysis, and summary stages complete successfully.
-
-📊 Example Agent Outputs
-🔍 Research Agent Output
-
-Latency: ~5923ms
-
-Tokens: 615
-
-Collected Sources: Investopedia, Forbes, Wikipedia, AIHR, The Balance Careers
-
-Keywords: HR, recruitment, employee lifecycle, compliance, benefits, engagement
-
-🧠 Analysis Agent Output
-
-Latency: ~4595ms
-
-Tokens: 1001
-
-Confidence: 0.98
-
-Insights:
-
-HR is both a function and a department
-
-Modern HR is strategic, not administrative
-
-Core responsibilities span recruitment, compliance, culture, and development
-
-📝 Summary Agent Output
-
-Latency: ~3989ms
-
-Tokens: 817
-
-Key Findings:
-
-HR manages the full employee lifecycle
-
-Plays a strategic role in organizational success
-
-Includes multiple specialized roles and functions
-
-✨ Key Features
-
-Multi-agent AI architecture
-
-Deterministic research pipeline
-
-Source-grounded outputs
-
-Structured agent outputs (JSON)
-
-High confidence scoring
-
-Edge-native execution
-
-Streaming AI responses
-
-🧠 Powered By
-
-Vercel AI SDK — AI model orchestration & streaming
-
-Vercel Edge Functions — Low-latency execution
-
-Next.js (App Router) — Application framework
-
-Modern LLMs — For reasoning, synthesis, and analysis
-
-🎯 Use Cases
-
-Academic research
-
-Market research
-
-Business analysis
-
-Policy analysis
-
-Technical documentation
-
-Knowledge discovery
-
-⚠️ Known Limitations
-
-Report Agent currently fails due to an Edge Function request issue
-
-Final report generation is temporarily unavailable
-
-Pipeline halts at the final stage
-
-🛣️ Roadmap
-
-✅ Stable multi-agent pipeline
-
-✅ Streaming AI outputs
-
-🔄 Fix Report Agent Edge Function failure
-
-🔜 Export reports (PDF / Markdown)
-
-🔜 Persistent research history
-
-🔜 Citation linking
-
-📜 License
-
-This project is licensed under the AGPLv3 License.
-See the LICENSE
- file for details.**
