@@ -11,6 +11,7 @@ export interface AgentInput {
 export interface AgentOutput {
   success: boolean;
   data: Record<string, unknown>;
+  error?: string;
   metadata: {
     processingTime: number;
     tokens?: number;

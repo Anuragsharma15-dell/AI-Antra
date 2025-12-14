@@ -1,8 +1,8 @@
 import { Agent, AgentOutput, PipelineState, AgentLog } from '@/types/agent';
-import { mockAgentResponses } from './config';
+import { supabase } from '@/integrations/supabase/client';
 
 // Agent Orchestrator - manages the execution flow between agents
-// This is where Vercel AI SDK would be integrated for real LLM calls
+// Uses Lovable AI Gateway via edge functions for real LLM calls
 
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -12,7 +12,7 @@ const generateAgentLog = (message: string, level: AgentLog['level'] = 'info'): A
   message,
 });
 
-// Simulates agent execution with realistic delays and progress updates
+// Executes a single agent using the AI edge function
 export const executeAgent = async (
   agent: Agent,
   input: Record<string, unknown>,
@@ -23,51 +23,79 @@ export const executeAgent = async (
   
   // Log initialization
   onLog(generateAgentLog(`Initializing ${agent.name}...`));
-  await delay(500);
+  await delay(300);
   onProgress(10);
 
   // Log input processing
   onLog(generateAgentLog(`Processing input data...`));
-  await delay(800);
-  onProgress(25);
+  await delay(200);
+  onProgress(20);
 
-  // Simulate LLM reasoning
-  // NOTE: In production, this would use Vercel AI SDK's generateText()
-  // Example: const result = await generateText({ model, prompt, system });
-  onLog(generateAgentLog(`Running AI inference...`));
-  await delay(1200);
-  onProgress(50);
+  // Call the AI edge function
+  onLog(generateAgentLog(`Running AI inference with Gemini 2.5 Flash...`));
+  onProgress(30);
 
-  // Log intermediate steps
-  onLog(generateAgentLog(`Analyzing results...`));
-  await delay(600);
-  onProgress(70);
+  try {
+    const { data, error } = await supabase.functions.invoke('agent-execute', {
+      body: {
+        agentId: agent.id,
+        agentName: agent.name,
+        agentRole: agent.role,
+        userQuery: input.query as string,
+        previousOutput: input.previousOutput,
+      },
+    });
 
-  // Generate structured output
-  onLog(generateAgentLog(`Generating structured output...`));
-  await delay(400);
-  onProgress(90);
+    if (error) {
+      onLog(generateAgentLog(`Error: ${error.message}`, 'error'));
+      throw error;
+    }
 
-  // Get mock response based on agent type
-  const mockData = mockAgentResponses[agent.id as keyof typeof mockAgentResponses] || {};
-  
-  onLog(generateAgentLog(`${agent.name} completed successfully`, 'success'));
-  onProgress(100);
+    if (!data.success) {
+      onLog(generateAgentLog(`Agent failed: ${data.error}`, 'error'));
+      throw new Error(data.error || 'Agent execution failed');
+    }
 
-  const processingTime = Date.now() - startTime;
+    onProgress(80);
+    onLog(generateAgentLog(`Analyzing results...`));
+    await delay(200);
 
-  return {
-    success: true,
-    data: {
-      ...mockData,
-      processedQuery: input.query || 'Default query',
-    },
-    metadata: {
-      processingTime,
-      tokens: Math.floor(Math.random() * 500) + 200,
-      model: 'gemini-2.5-flash', // Would be dynamic with real Vercel AI SDK
-    },
-  };
+    onProgress(90);
+    onLog(generateAgentLog(`Generating structured output...`));
+    await delay(100);
+
+    const processingTime = Date.now() - startTime;
+
+    onLog(generateAgentLog(`${agent.name} completed successfully`, 'success'));
+    onProgress(100);
+
+    return {
+      success: true,
+      data: data.data,
+      metadata: {
+        processingTime,
+        tokens: data.metadata?.tokens || 0,
+        model: data.metadata?.model || 'google/gemini-2.5-flash',
+      },
+    };
+  } catch (error) {
+    const processingTime = Date.now() - startTime;
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    
+    onLog(generateAgentLog(`${agent.name} failed: ${errorMessage}`, 'error'));
+    onProgress(100);
+
+    return {
+      success: false,
+      error: errorMessage,
+      data: {},
+      metadata: {
+        processingTime,
+        tokens: 0,
+        model: 'google/gemini-2.5-flash',
+      },
+    };
+  }
 };
 
 // Runs the entire pipeline sequentially
@@ -93,7 +121,7 @@ export const runPipeline = async (
 
     try {
       // Execute the agent
-      const previousOutput = i > 0 ? currentState.agents[i - 1].output : undefined;
+      const previousOutput = i > 0 ? currentState.agents[i - 1].output?.data : undefined;
       const output = await executeAgent(
         agent,
         { query: currentState.userQuery, previousOutput },
@@ -117,6 +145,11 @@ export const runPipeline = async (
         }
       );
 
+      // Check if agent failed
+      if (!output.success) {
+        throw new Error(output.error || 'Agent execution failed');
+      }
+
       // Update agent with output
       currentState = {
         ...currentState,
@@ -126,15 +159,22 @@ export const runPipeline = async (
       };
       onStateChange(currentState);
 
-      // Small delay between agents
-      await delay(500);
+      // Small delay between agents for visual effect
+      await delay(300);
     } catch (error) {
       // Handle agent failure
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
       currentState = {
         ...currentState,
         status: 'error',
         agents: currentState.agents.map((a, idx) =>
-          idx === i ? { ...a, status: 'error' as const } : a
+          idx === i 
+            ? { 
+                ...a, 
+                status: 'error' as const,
+                logs: [...a.logs, generateAgentLog(`Pipeline stopped: ${errorMessage}`, 'error')]
+              } 
+            : a
         ),
       };
       onStateChange(currentState);
