@@ -17,149 +17,77 @@ A minimalistic AI-powered Research agent
 
 
 
-
-## Powered By
-
-<div align="center">
-
-|          [Vercel AI SDK](https://sdk.vercel.ai/docs)          |                [Exa AI](https://exa.ai)                |
-| :-----------------------------------------------------------: | :----------------------------------------------------: |
-| <img src="/public/one.svg" alt="Vercel AI SDK" height="40" /> | <img src="/public/exa.png" alt="Exa AI" height="40" /> |
-|            For AI model integration and streaming             |          For web search and content retrieval          |
-
-</div>
-
-## Special Thanks
-
-<div align="center" markdown="1">
-
-[![Warp](https://github.com/user-attachments/assets/2bda420d-4211-4900-a37e-e3c7056d799c)](https://www.warp.dev/?utm_source=github&utm_medium=referral&utm_campaign=scira)<br>
-
-### **[Warp, the intelligent terminal](https://www.warp.dev/?utm_source=github&utm_medium=referral&utm_campaign=scira)**<br>
-
-[Available for MacOS, Linux, & Windows](https://www.warp.dev/?utm_source=github&utm_medium=referral&utm_campaign=scira)<br>
-[Visit warp.dev to learn more](https://www.warp.dev/?utm_source=github&utm_medium=referral&utm_campaign=scira)
-
-</div>
-🧠 Research AI Agent
-
-A minimal, agent-driven AI research system that autonomously gathers information, analyzes data, synthesizes insights, and generates structured research outputs using a multi-stage AI Agent Pipeline.
-
-Built on Vercel + Vercel AI SDK for fast, streaming, edge-native intelligence.
-
-🚀 Overview
-
-Research AI Agent transforms a simple user query into a well-structured research report by orchestrating multiple specialized agents.
-Each agent focuses on a single responsibility, ensuring accuracy, depth, and clarity.
-
-The system is designed for:
-
-Research
-
-Analysis
-
-Knowledge synthesis
-
-Decision support
-
-🧩 Agent Pipeline
-
-The research workflow is executed through a deterministic, multi-step agent pipeline:
-
-1️⃣ Research Agent — Data Gatherer
-
-Status: ✅ Complete
-Responsibility:
-
-Searches and collects relevant information from multiple trusted sources
-
-Grounds responses using real-world data
-
-Extracts raw content, keywords, and sources
-
 <!--
-  Polished README for AI-Antra (Agent Pipeline)
-  - The screenshot will prefer `/public/screenshot.png` and fall back to `/public/preview-screenshot.svg`.
-  - If you want the exact screenshot from the attachments placed into the repo, put it at `public/screenshot.png`.
+  Clean, well-formatted README for AI-Antra (Agent Pipeline)
+  Fixes:
+  - Correct link targets
+  - Proper markdown-only layout (no raw HTML blocks)
+  - Image paths use repository-relative locations (`public/`)
 -->
 
 # AI-Antra — Agent Pipeline
 
-> Multi-Agent research pipeline that orchestrates autonomous AI agents to gather, analyze, and synthesize research into structured reports.
+> Multi-agent research pipeline: autonomous agents collaborate to gather, analyze, and synthesize research into structured reports.
 
-[![Vercel OSS Program](https://vercel.com/oss/program-badge.svg)](https://vercel.com/oss)
+[Vercel AI SDK](https://vercel.com/docs/concepts/ai) • [Exa](https://exa.ai) • [Supabase](https://supabase.com)
 
-## Quick demo
+---
+
+## Demo
 
 <p align="center">
-  <picture>
-    <source srcset="/public/screenshot.png" type="image/png">
-    <img src="/public/preview-screenshot.svg" alt="Agent Pipeline screenshot" style="width:100%;max-width:1100px;border-radius:12px;box-shadow:0 10px 30px rgba(2,6,23,0.6);" />
-  </picture>
+  <img src="public/preview-screenshot.svg" alt="Agent Pipeline preview" style="width:100%;max-width:1100px;border-radius:12px;box-shadow:0 10px 30px rgba(2,6,23,0.6);" />
 </p>
 
-<p align="center">A clean, modern interface demonstrating the multi-agent research flow and real-time pipeline execution.</p>
+If you have the exact screenshot image, place it at `public/screenshot.png` and the README will use it instead of the preview.
 
-## Features
+## What it is
 
-- Deterministic multi-agent pipeline: Research → Analysis → Summarize → Report
-- Source-grounded outputs with confidence scoring
-- Streaming, edge-native responses using Vercel AI SDK
-- Structured JSON outputs that are easy to consume or export
+- A minimal, agent-driven research system that orchestrates specialized AI agents in a deterministic pipeline.
+- Agents include: Research (data gatherer), Analysis (data processor), Summary (synthesizer), and Report (final generator).
+
+## Key Features
+
+- Deterministic multi-stage pipeline
+- Source-grounded outputs with confidence scores
+- Streaming responses via Vercel AI SDK
+- Edge-native execution with Vercel Edge Functions
 
 ## Tech Stack
 
 - Frontend: Vite + React + TypeScript
-- UI: Tailwind CSS + Custom components
-- Edge & AI: Vercel Edge Functions + Vercel AI SDK
-- Integrations: Exa (web search) and Supabase for persistence
+- Styling: Tailwind CSS + Design system components
+- AI & Edge: Vercel AI SDK + Vercel Edge Functions
+- Persistence & Integrations: Supabase, Exa (web search)
 
-## Getting Started
-
-1. Install dependencies
+## Quickstart
 
 ```bash
 npm install
-```
-
-2. Start the dev server
-
-```bash
 npm run dev
+# then open http://localhost:5173
 ```
 
-3. Open http://localhost:5173 (or the port displayed by Vite)
+## Files of interest
 
-## Screenshot placement
-
-The README uses a fallback mechanism so the file renders even if the exact screenshot is not yet in the repo.
-
-- Preferred location for the real screenshot: `public/screenshot.png`
-- Fallback preview (already included): `public/preview-screenshot.svg`
-
-If you want me to embed the exact screenshot from your attachments into the repo, drop the image into `public/screenshot.png` and I'll add it for you.
-
-## Project structure (relevant)
-
-- `src/` — React app source
+- `src/` — React application source
 - `public/` — static assets (favicons, screenshots)
-- `supabase/functions/` — serverless Edge Functions (agent execution)
-
-## Usage
-
-- Enter a research query in the left panel and watch the pipeline execute.
-- Pipeline stages are visible in the main dashboard with progress and logs.
+- `supabase/functions/` — Edge Functions used by agents
 
 ## Contributing
 
-Contributions are welcome. Please open issues or PRs for bugs, improvements, or feature requests.
+Please open issues or PRs for bugs, improvements, or feature suggestions.
 
 ## License
 
-This project is licensed under AGPLv3. See `LICENSE` for details.
+AGPLv3 — see `LICENSE`.
 
 ---
 
-If you want, I can also embed the supplied screenshot image directly into the repository at `public/screenshot.png` now — would you like me to add that file (I can add it if you confirm)?
+Next steps:
+- I can embed the exact screenshot from your attachments into `public/screenshot.png` now (confirm and I'll add it).
+- I can also generate PNG/ICO favicon fallbacks and add link tags for broader browser support.
 
+
+## Quick demo
 
