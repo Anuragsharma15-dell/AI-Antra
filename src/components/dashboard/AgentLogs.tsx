@@ -15,10 +15,10 @@ const logIcons = {
 };
 
 const logColors = {
-  info: 'text-primary',
-  success: 'text-success',
-  warning: 'text-warning',
-  error: 'text-destructive',
+  info: 'text-blue-500',
+  success: 'text-green-500',
+  warning: 'text-yellow-500',
+  error: 'text-red-500',
 };
 
 const AgentLogs = ({ agents }: AgentLogsProps) => {
