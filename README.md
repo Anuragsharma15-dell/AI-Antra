@@ -1,93 +1,144 @@
 # AI-Antra
 
-A minimalistic AI-powered Research agent 
+A minimalistic, agent-driven AI research pipeline that autonomously gathers, analyzes, and synthesizes information into structured reports.
 
 <a href="https://vercel.com/oss">
   <img alt="Vercel OSS Program" src="https://vercel.com/oss/program-badge.svg" />
 </a>
 
-<br />
+---
 
+## Overview
 
+**AI-Antra** is a multi-agent research system where specialized AI agents collaborate in a deterministic pipeline to transform a user query into actionable insights.
 
-
-<br />
-
-
-
-
-
-<!--
-  Clean, well-formatted README for AI-Antra (Agent Pipeline)
-  Fixes:
-  - Correct link targets
-  - Proper markdown-only layout (no raw HTML blocks)
-  - Image paths use repository-relative locations (`public/`)
--->
-
-# AI-Antra — Agent Pipeline
-
-> Multi-agent research pipeline: autonomous agents collaborate to gather, analyze, and synthesize research into structured reports.
-
-[Vercel AI SDK](https://vercel.com/docs/concepts/ai) • [Exa](https://exa.ai) • [Supabase](https://supabase.com)
+Each agent is responsible for a clearly defined task, ensuring structured, explainable, and reproducible outputs.
 
 ---
 
 ## Demo
 
 <p align="center">
-  <img src="public/preview-screenshot.svg" alt="Agent Pipeline preview" style="width:100%;max-width:1100px;border-radius:12px;box-shadow:0 10px 30px rgba(2,6,23,0.6);" />
+  <img 
+    src="public/preview-screenshot.svg" 
+    alt="AI-Antra Agent Pipeline Preview"
+    style="width:100%;max-width:1100px;border-radius:14px;box-shadow:0 15px 40px rgba(2,6,23,0.65);" 
+  />
 </p>
 
-If you have the exact screenshot image, place it at `public/screenshot.png` and the README will use it instead of the preview.
-
-## What it is
-
-- A minimal, agent-driven research system that orchestrates specialized AI agents in a deterministic pipeline.
-- Agents include: Research (data gatherer), Analysis (data processor), Summary (synthesizer), and Report (final generator).
-
-## Key Features
-
-- Deterministic multi-stage pipeline
-- Source-grounded outputs with confidence scores
-- Streaming responses via Vercel AI SDK
-- Edge-native execution with Vercel Edge Functions
-
-## Tech Stack
-
-- Frontend: Vite + React + TypeScript
-- Styling: Tailwind CSS + Design system components
-- AI & Edge: Vercel AI SDK + Vercel Edge Functions
-- Persistence & Integrations: Supabase, Exa (web search)
-
-## Quickstart
-
-```bash
-npm install
-npm run dev
-# then open http://localhost:5173
-```
-
-## Files of interest
-
-- `src/` — React application source
-- `public/` — static assets (favicons, screenshots)
-- `supabase/functions/` — Edge Functions used by agents
-
-## Contributing
-
-Please open issues or PRs for bugs, improvements, or feature suggestions.
-
-## License
-
-AGPLv3 — see `LICENSE`.
+> Replace with `public/screenshot.png` if you have a real UI capture.
 
 ---
 
-Next steps:
-- I can embed the exact screenshot from your attachments into `public/screenshot.png` now (confirm and I'll add it).
-- I can also generate PNG/ICO favicon fallbacks and add link tags for broader browser support.
+## How It Works
+User Query
+↓
+Research Agent → Source discovery & raw data collection
+↓
+Analysis Agent → Pattern extraction & insights
+↓
+Summary Agent → Synthesis & risk identification
+↓
+Report Agent → Final report & action items
 
 
-## Quick demo
+Each stage builds strictly on the previous agent’s output.
+
+---
+
+## Key Features
+
+- 🔁 Deterministic multi-stage agent pipeline  
+- 🧠 Specialized agents with scoped responsibilities  
+- 📊 Structured JSON outputs at every stage  
+- ⚡ Edge-native execution via Vercel  
+- 🔄 Streaming responses using Vercel AI SDK  
+- 🧩 Modular, extensible architecture  
+
+---
+
+## Tech Stack
+
+**Frontend**
+- React + TypeScript
+- Tailwind CSS
+- Component-driven UI
+
+**AI & Edge**
+- Vercel AI SDK
+- Vercel Edge Functions
+- Gemini models
+
+**Integrations**
+- Exa (web search)
+- Supabase (storage & edge functions)
+
+---
+
+## Quick Start
+
+```bash
+# install dependencies
+npm install
+
+# start development server
+npm run dev
+
+# open in browser
+http://localhost:5173
+
+PROJECT STRUCTURE
+src/
+ ├─ components/        # UI components (agents, pipeline, logs)
+ ├─ lib/               # Agent logic & helpers
+ ├─ types/             # Shared TypeScript types
+ └─ app/               # Application shell
+
+public/
+ ├─ favicon.ico
+ └─ preview-screenshot.svg
+
+supabase/
+ └─ functions/         # Edge agent execution logic
+
+Use Cases
+
+Market & competitive research
+
+Technical landscape analysis
+
+Strategic planning support
+
+Hackathon-grade AI agent demos
+
+Agent orchestration experiments
+
+Roadmap
+
+Parallel agent execution
+
+Agent memory & persistence
+
+Tool-calling agents
+
+PDF / Markdown report export
+
+Vector-based retrieval
+
+Contributing
+
+Contributions are welcome.
+
+Open an issue for bugs or feature requests
+
+Submit a PR with clear changes and rationale
+
+License
+
+AGPL-3.0
+See LICENSE for full details.
+
+<p align="center"> <strong>AI-Antra — Where AI agents collaborate, not hallucinate.</strong> </p> ```
+
+
 
