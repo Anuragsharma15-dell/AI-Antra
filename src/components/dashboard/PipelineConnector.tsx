@@ -39,6 +39,6 @@ const PipelineConnector = ({ isActive, isComplete }: PipelineConnectorProps) => 
       </div>
     </div>
   );
-};
+}
 
 export default PipelineConnector;
