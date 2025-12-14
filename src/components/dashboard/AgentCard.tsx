@@ -109,11 +109,11 @@ const AgentCard = ({ agent, isActive, index }: AgentCardProps) => {
                 {agent.logs[agent.logs.length - 1].message}
               </p>
             </div>
-          )}
+          )}        
+
         </div>
       </div>
     </div>
   );
-};
-
+} 
 export default AgentCard;
