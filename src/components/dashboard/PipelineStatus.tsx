@@ -71,4 +71,6 @@ const PipelineStatus = ({ state }: PipelineStatusProps) => {
       )}
     </div>
   );
+};
+
 export default PipelineStatus;
