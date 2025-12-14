@@ -1,4 +1,4 @@
-# Scira
+# AI-Antra
 
 A minimalistic AI-powered Research agent 
 
@@ -15,7 +15,7 @@ A minimalistic AI-powered Research agent
 
 
 
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/zaidmukaddam/scira)
+
 
 
 ## Powered By
