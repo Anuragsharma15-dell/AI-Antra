@@ -65,13 +65,10 @@ const PipelineStatus = ({ state }: PipelineStatusProps) => {
 
       {/* Current query */}
       {state.userQuery && (
-        <div className="mt-4 p-3 bg-background rounded-lg border border-border">
-          <p className="text-xs text-muted-foreground mb-1">Current Query</p>
-          <p className="text-sm text-foreground">{state.userQuery}</p>
+        <div className="mt-4 p-4 bg-background/50 rounded-lg border border-border">
+          <p className="text-sm text-foreground font-mono">"{state.userQuery}"</p>  
         </div>
       )}
     </div>
   );
-};
-
 export default PipelineStatus;
